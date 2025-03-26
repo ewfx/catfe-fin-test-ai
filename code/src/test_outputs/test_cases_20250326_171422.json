@@ -1,0 +1,454 @@
+[
+  {
+    "id": "TC_001",
+    "title": "Valid Login",
+    "description": "Test if a user can log in with valid credentials",
+    "preconditions": [
+      "User is on the login page"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "standard_user",
+        "password": "secret_sauce"
+      },
+      "expected_data": {
+        "redirect": "product_list_page"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "username_field": "id_username",
+        "password_field": "id_password",
+        "login_button": "id_login"
+      }
+    },
+    "steps": [
+      "Enter 'standard_user' in the username field",
+      "Enter 'secret_sauce' in the password field",
+      "Click on the login button"
+    ],
+    "expected_result": "User is redirected to the product list page",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "Credentials are static and controlled by the system"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_002",
+    "title": "Invalid Login",
+    "description": "Test if the system handles invalid login attempts correctly",
+    "preconditions": [
+      "User is on the login page"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "invalid_user",
+        "password": "invalid_password"
+      },
+      "expected_data": {
+        "error_message": "Invalid username or password"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "username_field": "id_username",
+        "password_field": "id_password",
+        "login_button": "id_login",
+        "error_message": "id_error"
+      }
+    },
+    "steps": [
+      "Enter 'invalid_user' in the username field",
+      "Enter 'invalid_password' in the password field",
+      "Click on the login button"
+    ],
+    "expected_result": "Error message 'Invalid username or password' is displayed",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "Credentials are static and controlled by the system"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_003",
+    "title": "Locked Out User Login",
+    "description": "Test if the system prevents a locked out user from logging in",
+    "preconditions": [
+      "User is on the login page"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "locked_out_user",
+        "password": "secret_sauce"
+      },
+      "expected_data": {
+        "error_message": "Your account has been locked."
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "username_field": "id_username",
+        "password_field": "id_password",
+        "login_button": "id_login",
+        "error_message": "id_error"
+      }
+    },
+    "steps": [
+      "Enter 'locked_out_user' in the username field",
+      "Enter 'secret_sauce' in the password field",
+      "Click on the login button"
+    ],
+    "expected_result": "Error message 'Your account has been locked.' is displayed",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User roles are predefined and associated with the username"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_004",
+    "title": "Product List Visibility Post-Login",
+    "description": "Test if the product list is visible after a successful login",
+    "preconditions": [
+      "User has successfully logged in"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "page_title": "Product List"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "page_title": "id_title"
+      }
+    },
+    "steps": [
+      "Check the title of the current page"
+    ],
+    "expected_result": "The title of the current page is 'Product List'",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_005",
+    "title": "Product Sorting by Name",
+    "description": "Test if products can be sorted by name in ascending order",
+    "preconditions": [
+      "User is on the product list page"
+    ],
+    "test_data": {
+      "input_data": {
+        "sort_option": "Name A-Z"
+      },
+      "expected_data": {
+        "first_product": "A Product",
+        "last_product": "Z Product"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "sort_dropdown": "id_sort",
+        "first_product_name": "id_first_product",
+        "last_product_name": "id_last_product"
+      }
+    },
+    "steps": [
+      "Select 'Name A-Z' from the sort dropdown",
+      "Check the name of the first product",
+      "Check the name of the last product"
+    ],
+    "expected_result": "The first product's name starts with 'A' and the last product's name starts with 'Z'",
+    "type": "functional",
+    "priority": "medium",
+    "dependencies": [
+      "TC_004"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_006",
+    "title": "Add Product to Cart",
+    "description": "Test the functionality of adding a product to the cart",
+    "preconditions": [
+      "User is logged in",
+      "Product is available"
+    ],
+    "test_data": {
+      "input_data": {
+        "product_id": "123",
+        "quantity": "1"
+      },
+      "expected_data": {
+        "cart_item_count": "1"
+      },
+      "api_endpoints": {
+        "endpoint": "/api/cart/add",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "add_to_cart_button": "id/xpath",
+        "cart_icon": "id/xpath"
+      }
+    },
+    "steps": [
+      "Navigate to product page",
+      "Click on 'Add to Cart' button",
+      "View cart icon"
+    ],
+    "expected_result": "Cart item count increases by 1",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "Product is not already in the cart"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_007",
+    "title": "Remove Product from Cart",
+    "description": "Test the functionality of removing a product from the cart",
+    "preconditions": [
+      "User is logged in",
+      "Product is in the cart"
+    ],
+    "test_data": {
+      "input_data": {
+        "product_id": "123"
+      },
+      "expected_data": {
+        "cart_item_count": "0"
+      },
+      "api_endpoints": {
+        "endpoint": "/api/cart/remove",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "remove_from_cart_button": "id/xpath",
+        "cart_icon": "id/xpath"
+      }
+    },
+    "steps": [
+      "Navigate to cart page",
+      "Click on 'Remove from Cart' button",
+      "View cart icon"
+    ],
+    "expected_result": "Cart item count decreases by 1",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_008",
+    "title": "Cart Icon Item Count",
+    "description": "Test if the cart icon displays the correct number of items",
+    "preconditions": [
+      "User is logged in"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "cart_item_count": "1"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "cart_icon": "id/xpath"
+      }
+    },
+    "steps": [
+      "Add a product to the cart",
+      "View cart icon"
+    ],
+    "expected_result": "Cart icon displays '1'",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "Cart is initially empty"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_009",
+    "title": "Navigation to Cart Page",
+    "description": "Test if clicking the cart icon navigates to the cart page",
+    "preconditions": [
+      "User is logged in"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "current_page": "Cart"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "cart_icon": "id/xpath"
+      }
+    },
+    "steps": [
+      "Click on cart icon"
+    ],
+    "expected_result": "User is redirected to the cart page",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_010",
+    "title": "Display Cart Contents",
+    "description": "Test if the cart page lists all added products with correct details",
+    "preconditions": [
+      "User is logged in",
+      "Product is added to the cart"
+    ],
+    "test_data": {
+      "input_data": {
+        "product_id": "123",
+        "quantity": "1"
+      },
+      "expected_data": {
+        "product_list": [
+          {
+            "id": "123",
+            "quantity": "1"
+          }
+        ]
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "product_list": "id/xpath"
+      }
+    },
+    "steps": [
+      "Navigate to cart page",
+      "View product list"
+    ],
+    "expected_result": "Product list contains the added product with correct quantity",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  }
+]

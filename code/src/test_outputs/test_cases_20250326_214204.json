@@ -1,0 +1,463 @@
+[
+  {
+    "id": "TC_001",
+    "title": "Successful User Login",
+    "description": "Test the successful login of a standard user",
+    "preconditions": [
+      "User is on the login page"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "standard_user",
+        "password": "secret_sauce"
+      },
+      "expected_data": {
+        "redirect": "product_catalog"
+      },
+      "api_endpoints": {
+        "endpoint": "/api/login",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "username_field": "id/username",
+        "password_field": "id/password",
+        "login_button": "id/login"
+      }
+    },
+    "steps": [
+      "Enter 'standard_user' in the username field",
+      "Enter 'secret_sauce' in the password field",
+      "Click on the login button"
+    ],
+    "expected_result": "User is redirected to the product catalog",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "Credentials are static and controlled by the system"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_002",
+    "title": "Invalid User Login",
+    "description": "Test the login of a user with invalid credentials",
+    "preconditions": [
+      "User is on the login page"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "invalid_user",
+        "password": "wrong_password"
+      },
+      "expected_data": {
+        "error_message": "Invalid username or password"
+      },
+      "api_endpoints": {
+        "endpoint": "/api/login",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "username_field": "id/username",
+        "password_field": "id/password",
+        "login_button": "id/login",
+        "error_message": "id/error"
+      }
+    },
+    "steps": [
+      "Enter 'invalid_user' in the username field",
+      "Enter 'wrong_password' in the password field",
+      "Click on the login button"
+    ],
+    "expected_result": "Error message 'Invalid username or password' is displayed",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "Credentials are static and controlled by the system"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_003",
+    "title": "Locked Out User Login",
+    "description": "Test the login of a locked out user",
+    "preconditions": [
+      "User is on the login page"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "locked_out_user",
+        "password": "secret_sauce"
+      },
+      "expected_data": {
+        "error_message": "Your account has been locked"
+      },
+      "api_endpoints": {
+        "endpoint": "/api/login",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "username_field": "id/username",
+        "password_field": "id/password",
+        "login_button": "id/login",
+        "error_message": "id/error"
+      }
+    },
+    "steps": [
+      "Enter 'locked_out_user' in the username field",
+      "Enter 'secret_sauce' in the password field",
+      "Click on the login button"
+    ],
+    "expected_result": "Error message 'Your account has been locked' is displayed",
+    "type": "functional",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User roles are predefined and associated with the username"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_004",
+    "title": "Product Catalog Visibility Post-Login",
+    "description": "Test the visibility of the product catalog after successful login",
+    "preconditions": [
+      "User is logged in"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "product_list": "visible"
+      },
+      "api_endpoints": {
+        "endpoint": "/api/products",
+        "method": "GET"
+      },
+      "ui_elements": {
+        "product_list": "id/products"
+      }
+    },
+    "steps": [
+      "Verify the visibility of the product list"
+    ],
+    "expected_result": "Product list is visible",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_005",
+    "title": "Add Product to Cart",
+    "description": "Test the addition of a product to the cart",
+    "preconditions": [
+      "User is logged in",
+      "User is on the product catalog page"
+    ],
+    "test_data": {
+      "input_data": {
+        "product_id": "valid_product_id"
+      },
+      "expected_data": {
+        "cart_count": "incremented"
+      },
+      "api_endpoints": {
+        "endpoint": "/api/cart/add",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "add_button": "id/add_to_cart",
+        "cart_count": "id/cart_count"
+      }
+    },
+    "steps": [
+      "Click on the 'Add to Cart' button of a product",
+      "Verify the cart count"
+    ],
+    "expected_result": "Cart count is incremented",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_004"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_006",
+    "title": "Remove Product from Cart",
+    "description": "Test the removal of a product from the cart",
+    "preconditions": [
+      "User is logged in",
+      "User has at least one product in the cart"
+    ],
+    "test_data": {
+      "input_data": {
+        "product_id": "valid_product_id"
+      },
+      "expected_data": {
+        "cart_count": "decremented"
+      },
+      "api_endpoints": {
+        "endpoint": "/api/cart/remove",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "remove_button": "id/remove_from_cart",
+        "cart_count": "id/cart_count"
+      }
+    },
+    "steps": [
+      "Click on the 'Remove from Cart' button of a product in the cart",
+      "Verify the cart count"
+    ],
+    "expected_result": "Cart count is decremented",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_005"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_007",
+    "title": "Cart Page Product Listing",
+    "description": "Test the listing of products in the cart page",
+    "preconditions": [
+      "User is logged in",
+      "User has at least one product in the cart",
+      "User is on the cart page"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "product_list": "visible"
+      },
+      "api_endpoints": {
+        "endpoint": "/api/cart",
+        "method": "GET"
+      },
+      "ui_elements": {
+        "product_list": "id/cart_products"
+      }
+    },
+    "steps": [
+      "Verify the visibility of the product list in the cart"
+    ],
+    "expected_result": "Product list in the cart is visible",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_005"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_008",
+    "title": "Empty Cart",
+    "description": "Test the visibility of the 'Cart is empty' message when there are no products in the cart",
+    "preconditions": [
+      "User is logged in",
+      "User has no products in the cart",
+      "User is on the cart page"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "empty_message": "visible"
+      },
+      "api_endpoints": {
+        "endpoint": "/api/cart",
+        "method": "GET"
+      },
+      "ui_elements": {
+        "empty_message": "id/empty_cart_message"
+      }
+    },
+    "steps": [
+      "Verify the visibility of the 'Cart is empty' message"
+    ],
+    "expected_result": "'Cart is empty' message is visible",
+    "type": "functional",
+    "priority": "medium",
+    "dependencies": [
+      "TC_006"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_009",
+    "title": "Product Catalog Load Performance",
+    "description": "Test the load performance of the product catalog",
+    "preconditions": [
+      "User is logged in"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "load_time": "< 2 seconds"
+      },
+      "api_endpoints": {
+        "endpoint": "/api/products",
+        "method": "GET"
+      },
+      "ui_elements": {
+        "product_list": "id/products"
+      }
+    },
+    "steps": [
+      "Measure the load time of the product catalog"
+    ],
+    "expected_result": "Product catalog loads within 2 seconds",
+    "type": "performance",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_010",
+    "title": "Cart Page Load Performance",
+    "description": "Test the load performance of the cart page",
+    "preconditions": [
+      "User is logged in",
+      "User has at least one product in the cart",
+      "User is on the cart page"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "load_time": "< 2 seconds"
+      },
+      "api_endpoints": {
+        "endpoint": "/api/cart",
+        "method": "GET"
+      },
+      "ui_elements": {
+        "product_list": "id/cart_products"
+      }
+    },
+    "steps": [
+      "Measure the load time of the cart page"
+    ],
+    "expected_result": "Cart page loads within 2 seconds",
+    "type": "performance",
+    "priority": "medium",
+    "dependencies": [
+      "TC_005"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  }
+]

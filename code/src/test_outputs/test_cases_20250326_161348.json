@@ -1,0 +1,541 @@
+[
+  {
+    "id": "TC_001",
+    "title": "Valid Numeric Input",
+    "description": "Test if the app correctly handles valid numeric inputs from 0 to 9",
+    "preconditions": [
+      "Application is launched and in ready state"
+    ],
+    "test_data": {
+      "input_data": {
+        "Numeric Input": "5"
+      },
+      "expected_data": {
+        "Display": "5"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "Numeric Input": "id/xpath"
+      }
+    },
+    "steps": [
+      "Enter '5' in the Numeric Input field"
+    ],
+    "expected_result": "The number '5' is displayed on the screen",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User uses on-screen number buttons for input"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop/Mobile/Tablet"
+    }
+  },
+  {
+    "id": "TC_002",
+    "title": "Invalid Numeric Input",
+    "description": "Test if the app correctly handles invalid numeric inputs",
+    "preconditions": [
+      "Application is launched and in ready state"
+    ],
+    "test_data": {
+      "input_data": {
+        "Numeric Input": "10"
+      },
+      "expected_data": {
+        "Display": ""
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "Numeric Input": "id/xpath"
+      }
+    },
+    "steps": [
+      "Enter '10' in the Numeric Input field"
+    ],
+    "expected_result": "The input '10' is not accepted or displayed",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User uses on-screen number buttons for input"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop/Mobile/Tablet"
+    }
+  },
+  {
+    "id": "TC_003",
+    "title": "Valid Decimal Input",
+    "description": "Test if the app correctly handles valid decimal inputs",
+    "preconditions": [
+      "TC_001"
+    ],
+    "test_data": {
+      "input_data": {
+        "Decimal Input": "5.3"
+      },
+      "expected_data": {
+        "Display": "5.3"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "Decimal Input": "id/xpath"
+      }
+    },
+    "steps": [
+      "Enter '5.3' in the Decimal Input field"
+    ],
+    "expected_result": "The decimal number '5.3' is displayed on the screen",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "Decimal input is used for fractional numbers"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop/Mobile/Tablet"
+    }
+  },
+  {
+    "id": "TC_004",
+    "title": "Invalid Decimal Input",
+    "description": "Test if the app correctly handles invalid decimal inputs",
+    "preconditions": [
+      "TC_001"
+    ],
+    "test_data": {
+      "input_data": {
+        "Decimal Input": "5..3"
+      },
+      "expected_data": {
+        "Display": ""
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "Decimal Input": "id/xpath"
+      }
+    },
+    "steps": [
+      "Enter '5..3' in the Decimal Input field"
+    ],
+    "expected_result": "The input '5..3' is not accepted or displayed",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "Decimal input is used for fractional numbers"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop/Mobile/Tablet"
+    }
+  },
+  {
+    "id": "TC_005",
+    "title": "Valid Arithmetic Operation",
+    "description": "Test if the app correctly performs basic arithmetic operations",
+    "preconditions": [
+      "TC_001",
+      "TC_003"
+    ],
+    "test_data": {
+      "input_data": {
+        "Operation Input": "5+3"
+      },
+      "expected_data": {
+        "Display": "8"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "Operation Input": "id/xpath"
+      }
+    },
+    "steps": [
+      "Enter '5+3' in the Operation Input field",
+      "Press '='"
+    ],
+    "expected_result": "The result '8' is displayed on the screen",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop/Mobile/Tablet"
+    }
+  },
+  {
+    "id": "TC_006",
+    "title": "Division by Zero",
+    "description": "Test if the app correctly handles division by zero",
+    "preconditions": [
+      "TC_001"
+    ],
+    "test_data": {
+      "input_data": {
+        "Division Input": "5/0"
+      },
+      "expected_data": {
+        "Display": "Cannot divide by zero"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "Division Input": "id/xpath"
+      }
+    },
+    "steps": [
+      "Enter '5/0' in the Division Input field",
+      "Press '='"
+    ],
+    "expected_result": "The error message 'Cannot divide by zero' is displayed on the screen",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "Division operation is understood by the user"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop/Mobile/Tablet"
+    }
+  },
+  {
+    "id": "TC_007",
+    "title": "Real-time Input Display",
+    "description": "Test if the app correctly displays real-time input",
+    "preconditions": [
+      "TC_001",
+      "TC_003",
+      "TC_005"
+    ],
+    "test_data": {
+      "input_data": {
+        "Any Input": "5+3"
+      },
+      "expected_data": {
+        "Display": "5+3"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "Any Input": "id/xpath"
+      }
+    },
+    "steps": [
+      "Enter '5+3' in the Any Input field"
+    ],
+    "expected_result": "The input '5+3' is displayed on the screen in real-time",
+    "type": "performance",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001",
+      "TC_003",
+      "TC_005"
+    ],
+    "assumptions": [
+      "Screen is capable of displaying all inputs without truncation"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop/Mobile/Tablet"
+    }
+  },
+  {
+    "id": "TC_008",
+    "title": "Test Clear Functionality",
+    "description": "Testing the clear functionality of the application",
+    "preconditions": [
+      "Application is installed and running"
+    ],
+    "test_data": {
+      "input_data": {
+        "button": "C"
+      },
+      "expected_data": {
+        "screen": "empty"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "clear_button": "id/xpath"
+      }
+    },
+    "steps": [
+      "Launch the application",
+      "Perform any operation",
+      "Press 'C'"
+    ],
+    "expected_result": "All inputs and results are cleared",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "FT_001",
+      "FT_002",
+      "FT_003"
+    ],
+    "assumptions": [
+      "User knows 'C' stands for clear/reset"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop/Mobile/Tablet"
+    }
+  },
+  {
+    "id": "TC_009",
+    "title": "Test Result Display on Equal Press",
+    "description": "Testing the result display functionality after '=' is pressed",
+    "preconditions": [
+      "Application is installed and running"
+    ],
+    "test_data": {
+      "input_data": {
+        "operation": "2+2",
+        "button": "="
+      },
+      "expected_data": {
+        "result": "4"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "equal_button": "id/xpath"
+      }
+    },
+    "steps": [
+      "Launch the application",
+      "Input '2+2'",
+      "Press '='"
+    ],
+    "expected_result": "Display '4' as the result",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "FT_003"
+    ],
+    "assumptions": [
+      "User completes an operation before pressing '='"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop/Mobile/Tablet"
+    }
+  },
+  {
+    "id": "TC_010",
+    "title": "Test Invalid Operation Error Handling",
+    "description": "Testing the error handling for invalid operations",
+    "preconditions": [
+      "Application is installed and running"
+    ],
+    "test_data": {
+      "input_data": {
+        "operation": "2++2",
+        "button": "="
+      },
+      "expected_data": {
+        "error": "Invalid operation"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "equal_button": "id/xpath"
+      }
+    },
+    "steps": [
+      "Launch the application",
+      "Input '2++2'",
+      "Press '='"
+    ],
+    "expected_result": "Display 'Invalid operation' error",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [
+      "FT_003"
+    ],
+    "assumptions": [
+      "User completes an operation before pressing '='"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop/Mobile/Tablet"
+    }
+  },
+  {
+    "id": "TC_011",
+    "title": "Test Clear Functionality During Ongoing Operation",
+    "description": "Testing the clear functionality during an ongoing operation",
+    "preconditions": [
+      "Application is installed and running"
+    ],
+    "test_data": {
+      "input_data": {
+        "operation": "2+2",
+        "button": "C"
+      },
+      "expected_data": {
+        "screen": "empty"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "clear_button": "id/xpath"
+      }
+    },
+    "steps": [
+      "Launch the application",
+      "Input '2+2'",
+      "Press 'C'"
+    ],
+    "expected_result": "All inputs and results are cleared",
+    "type": "boundary",
+    "priority": "medium",
+    "dependencies": [
+      "FT_001",
+      "FT_002",
+      "FT_003",
+      "FT_008"
+    ],
+    "assumptions": [
+      "User knows 'C' stands for clear/reset"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop/Mobile/Tablet"
+    }
+  },
+  {
+    "id": "TC_012",
+    "title": "Test Multiple Equal Presses",
+    "description": "Testing the result display functionality after multiple '=' presses",
+    "preconditions": [
+      "Application is installed and running"
+    ],
+    "test_data": {
+      "input_data": {
+        "operation": "2+2",
+        "button": "="
+      },
+      "expected_data": {
+        "result": "4"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "equal_button": "id/xpath"
+      }
+    },
+    "steps": [
+      "Launch the application",
+      "Input '2+2'",
+      "Press '=' multiple times"
+    ],
+    "expected_result": "Display '4' as the result",
+    "type": "boundary",
+    "priority": "medium",
+    "dependencies": [
+      "FT_003"
+    ],
+    "assumptions": [
+      "User completes an operation before pressing '='"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop/Mobile/Tablet"
+    }
+  }
+]

@@ -1,0 +1,245 @@
+[
+  {
+    "id": "TC_001",
+    "title": "Valid Login Test",
+    "description": "Test for successful login with valid credentials",
+    "preconditions": [
+      "User is on the login page"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "standard_user",
+        "password": "secret_sauce"
+      },
+      "expected_data": {
+        "redirect": "product list page"
+      },
+      "api_endpoints": {
+        "endpoint": "/login",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "username": "username_field",
+        "password": "password_field",
+        "login_button": "login_button"
+      }
+    },
+    "steps": [
+      "Enter valid username",
+      "Enter valid password",
+      "Click on login button"
+    ],
+    "expected_result": "User is redirected to the product list page",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User has valid credentials"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_002",
+    "title": "Invalid Login Test",
+    "description": "Test for unsuccessful login with invalid credentials",
+    "preconditions": [
+      "User is on the login page"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "invalid_user",
+        "password": "invalid_password"
+      },
+      "expected_data": {
+        "error_message": "Invalid credentials"
+      },
+      "api_endpoints": {
+        "endpoint": "/login",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "username": "username_field",
+        "password": "password_field",
+        "login_button": "login_button"
+      }
+    },
+    "steps": [
+      "Enter invalid username",
+      "Enter invalid password",
+      "Click on login button"
+    ],
+    "expected_result": "Error message for invalid credentials is displayed",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User enters invalid credentials"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_003",
+    "title": "Product List Display Test",
+    "description": "Test for successful display of product list after login",
+    "preconditions": [
+      "User is logged in"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "product_list": "displayed"
+      },
+      "api_endpoints": {
+        "endpoint": "/products",
+        "method": "GET"
+      },
+      "ui_elements": {
+        "product_list": "product_list_container"
+      }
+    },
+    "steps": [
+      "Verify that product list is displayed"
+    ],
+    "expected_result": "Product list is displayed",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is logged in successfully"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_004",
+    "title": "Add Product to Cart Test",
+    "description": "Test for successful addition of product to the cart",
+    "preconditions": [
+      "User is logged in",
+      "Product list is displayed"
+    ],
+    "test_data": {
+      "input_data": {
+        "product_id": "valid_product_id"
+      },
+      "expected_data": {
+        "cart_count": "increased"
+      },
+      "api_endpoints": {
+        "endpoint": "/cart/add",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "add_to_cart_button": "add_to_cart_button"
+      }
+    },
+    "steps": [
+      "Select a product",
+      "Click on 'Add to Cart' button",
+      "Verify that cart count is increased"
+    ],
+    "expected_result": "Cart count is increased",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003"
+    ],
+    "assumptions": [
+      "User is logged in and has access to the product catalog"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_005",
+    "title": "Remove Product from Cart Test",
+    "description": "Test for successful removal of product from the cart",
+    "preconditions": [
+      "User is logged in",
+      "Product is added to the cart"
+    ],
+    "test_data": {
+      "input_data": {
+        "product_id": "valid_product_id"
+      },
+      "expected_data": {
+        "cart_count": "decreased"
+      },
+      "api_endpoints": {
+        "endpoint": "/cart/remove",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "remove_from_cart_button": "remove_from_cart_button"
+      }
+    },
+    "steps": [
+      "Go to the cart",
+      "Click on 'Remove from Cart' button",
+      "Verify that cart count is decreased"
+    ],
+    "expected_result": "Cart count is decreased",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003",
+      "TC_004"
+    ],
+    "assumptions": [
+      "User is logged in and has a product in the cart"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  }
+]

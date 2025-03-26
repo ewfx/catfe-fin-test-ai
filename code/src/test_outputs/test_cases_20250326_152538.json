@@ -1,0 +1,208 @@
+[
+  {
+    "id": "TC_001",
+    "title": "Numeric Input Validation",
+    "description": "Verify that the app accepts numeric input",
+    "preconditions": [],
+    "test_data": "5",
+    "steps": [
+      "Tap number 5 on the numeric keypad"
+    ],
+    "expected_result": "5 is displayed on the screen",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User is inputting numbers via a numeric keypad"
+    ]
+  },
+  {
+    "id": "TC_002",
+    "title": "Non-Numeric Input Validation",
+    "description": "Verify that the app rejects non-numeric input",
+    "preconditions": [],
+    "test_data": "a",
+    "steps": [
+      "Try to input 'a'"
+    ],
+    "expected_result": "Error message is displayed",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User is inputting numbers via a numeric keypad"
+    ]
+  },
+  {
+    "id": "TC_003",
+    "title": "Decimal Input Validation",
+    "description": "Verify that the app accepts decimal input",
+    "preconditions": [],
+    "test_data": "5.5",
+    "steps": [
+      "Tap number 5, then '.', then 5 on the numeric keypad"
+    ],
+    "expected_result": "5.5 is displayed on the screen",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User is inputting numbers via a numeric keypad"
+    ]
+  },
+  {
+    "id": "TC_004",
+    "title": "Addition Operation",
+    "description": "Verify that the app correctly performs addition",
+    "preconditions": [],
+    "test_data": "5, 7",
+    "steps": [
+      "Tap number 5, then '+', then 7, then '=' on the numeric keypad"
+    ],
+    "expected_result": "12 is displayed on the screen",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is inputting numbers via a numeric keypad"
+    ]
+  },
+  {
+    "id": "TC_005",
+    "title": "Subtraction Operation",
+    "description": "Verify that the app correctly performs subtraction",
+    "preconditions": [],
+    "test_data": "7, 5",
+    "steps": [
+      "Tap number 7, then '-', then 5, then '=' on the numeric keypad"
+    ],
+    "expected_result": "2 is displayed on the screen",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is inputting numbers via a numeric keypad"
+    ]
+  },
+  {
+    "id": "TC_006",
+    "title": "Multiplication Operation",
+    "description": "Verify that the app correctly performs multiplication",
+    "preconditions": [],
+    "test_data": "5, 7",
+    "steps": [
+      "Tap number 5, then 'x', then 7, then '=' on the numeric keypad"
+    ],
+    "expected_result": "35 is displayed on the screen",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is inputting numbers via a numeric keypad"
+    ]
+  },
+  {
+    "id": "TC_007",
+    "title": "Division Operation",
+    "description": "Verify that the app correctly performs division",
+    "preconditions": [],
+    "test_data": "10, 5",
+    "steps": [
+      "Tap number 10, then '/', then 5, then '=' on the numeric keypad"
+    ],
+    "expected_result": "2 is displayed on the screen",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is inputting numbers via a numeric keypad"
+    ]
+  },
+  {
+    "id": "TC_008",
+    "title": "Divide-by-Zero Error",
+    "description": "Verify that the app correctly handles divide-by-zero",
+    "preconditions": [],
+    "test_data": "5, 0",
+    "steps": [
+      "Tap number 5, then '/', then 0, then '=' on the numeric keypad"
+    ],
+    "expected_result": "Error message 'Cannot divide by zero' is displayed",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is inputting numbers via a numeric keypad"
+    ]
+  },
+  {
+    "id": "TC_009",
+    "title": "Real-Time Input Display",
+    "description": "Verify that the app displays input in real time",
+    "preconditions": [],
+    "test_data": "5",
+    "steps": [
+      "Tap number 5 on the numeric keypad"
+    ],
+    "expected_result": "5 is displayed on the screen immediately",
+    "type": "functional",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is inputting numbers via a numeric keypad"
+    ]
+  },
+  {
+    "id": "TC_010",
+    "title": "Clear Input/Result",
+    "description": "Verify that the app clears input/result when 'C' is tapped",
+    "preconditions": [
+      "5 is displayed on the screen"
+    ],
+    "test_data": "",
+    "steps": [
+      "Tap 'C' on the numeric keypad"
+    ],
+    "expected_result": "Screen is cleared",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is inputting numbers via a numeric keypad"
+    ]
+  },
+  {
+    "id": "TC_011",
+    "title": "Display Result",
+    "description": "Verify that the app displays the result after '=' is tapped",
+    "preconditions": [],
+    "test_data": "5, 7",
+    "steps": [
+      "Tap number 5, then '+', then 7, then '=' on the numeric keypad"
+    ],
+    "expected_result": "12 is displayed on the screen",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_004"
+    ],
+    "assumptions": [
+      "User is inputting numbers via a numeric keypad"
+    ]
+  }
+]

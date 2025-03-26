@@ -1,0 +1,85 @@
+4.1 User Authentication
+
+FR-001: Users must be able to log in using a username and password.
+
+FR-002: Login must support various user roles (e.g., standard_user, locked_out_user).
+
+FR-003: Error messages should be shown for invalid credentials.
+
+4.2 Product Catalog
+
+FR-004: After login, users should see a product list.
+
+FR-005: Each product must display name, price, image, and 'Add to Cart' button.
+
+FR-006: Products should be sortable (Name A-Z, Price low-high, etc.).
+
+4.3 Shopping Cart
+
+FR-007: Users can add/remove products to/from the cart.
+
+FR-008: Cart icon should show the current number of items.
+
+FR-009: Clicking the cart icon navigates to the cart page.
+
+FR-010: Cart page should list added products with name, quantity, price.
+
+4.4 Checkout Flow
+
+FR-011: User can proceed to checkout from cart page.
+
+FR-012: Checkout Step One requires First Name, Last Name, and Postal Code.
+
+FR-013: Checkout Step Two shows order summary and total.
+
+FR-014: Completing checkout displays confirmation message.
+
+4.5 Navigation and Header
+
+FR-015: The app header should display cart, menu, and logout options.
+
+FR-016: Menu sidebar should include 'All Items', 'About', 'Logout', 'Reset App State'.
+
+FR-017: Clicking 'Logout' should end session and return to login screen.
+
+4.6 Error Handling & Validation
+
+FR-018: Required form fields should show error if left empty.
+
+FR-019: Locked users must not be allowed to log in.
+
+FR-020: Invalid login attempts should not redirect to product page.
+
+5. Validations
+
+Login should fail for locked or invalid users.
+
+Checkout should require all personal info fields.
+
+Cart count must match actual items.
+
+Cart should reset on logout.
+
+6. Assumptions
+
+Credentials are static and controlled by the system.
+
+No real backend or payment processing occurs.
+
+Mobile support is secondary to desktop testing.
+
+7. Out of Scope
+
+Real user registration
+
+Accepted usernames are:
+standard_user
+locked_out_user
+problem_user
+performance_glitch_user
+error_user
+visual_user
+Password for all users:
+secret_sauce
+
+link: https://www.saucedemo.com/

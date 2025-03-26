@@ -1,0 +1,484 @@
+[
+  {
+    "id": "TC_001",
+    "title": "Test Numeric Input Handling",
+    "description": "Test if the app correctly handles numeric inputs ranging from 0 to 9",
+    "preconditions": [],
+    "test_data": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9",
+    "steps": [
+      "Launch the app",
+      "Enter each numeric input from 0 to 9"
+    ],
+    "expected_result": "Each input is displayed on screen",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User interacts with a UI element to provide input"
+    ]
+  },
+  {
+    "id": "TC_001",
+    "title": "Test Invalid Numeric Input Handling",
+    "description": "Test if the app correctly handles invalid numeric inputs",
+    "preconditions": [],
+    "test_data": "-1, 10, a, *, #",
+    "steps": [
+      "Launch the app",
+      "Enter each invalid numeric input"
+    ],
+    "expected_result": "Each input is ignored",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User interacts with a UI element to provide input"
+    ]
+  },
+  {
+    "id": "TC_001",
+    "title": "Test Decimal Input Handling",
+    "description": "Test if the app correctly handles decimal input",
+    "preconditions": [
+      "Numeric input has been entered"
+    ],
+    "test_data": ".",
+    "steps": [
+      "Launch the app",
+      "Enter a numeric input",
+      "Enter the decimal point"
+    ],
+    "expected_result": "Decimal point is displayed on screen and allows for fractional input",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "Decimal input is used for fractional numbers"
+    ]
+  },
+  {
+    "id": "TC_001",
+    "title": "Test Invalid Decimal Input Handling",
+    "description": "Test if the app correctly handles invalid decimal input",
+    "preconditions": [
+      "Decimal point has been entered for the current number"
+    ],
+    "test_data": ".",
+    "steps": [
+      "Launch the app",
+      "Enter a numeric input",
+      "Enter the decimal point",
+      "Attempt to enter another decimal point"
+    ],
+    "expected_result": "Second decimal point is ignored",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [
+      "TC_003"
+    ],
+    "assumptions": [
+      "Decimal input is used for fractional numbers"
+    ]
+  },
+  {
+    "id": "TC_001",
+    "title": "Test Addition Operation",
+    "description": "Test if the app correctly performs addition operations",
+    "preconditions": [
+      "Two valid numbers have been entered"
+    ],
+    "test_data": "3, 5",
+    "steps": [
+      "Launch the app",
+      "Enter the first number",
+      "Enter the + operator",
+      "Enter the second number",
+      "Press ="
+    ],
+    "expected_result": "Sum of the two values is displayed",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations"
+    ]
+  },
+  {
+    "id": "TC_001",
+    "title": "Test Subtraction Operation",
+    "description": "Test if the app correctly performs subtraction operations",
+    "preconditions": [
+      "Two valid numbers have been entered"
+    ],
+    "test_data": "7, 2",
+    "steps": [
+      "Launch the app",
+      "Enter the first number",
+      "Enter the - operator",
+      "Enter the second number",
+      "Press ="
+    ],
+    "expected_result": "Difference of the two values is displayed",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations"
+    ]
+  },
+  {
+    "id": "TC_001",
+    "title": "Test Multiplication Operation",
+    "description": "Test if the app correctly performs multiplication operations",
+    "preconditions": [
+      "Two valid numbers have been entered"
+    ],
+    "test_data": "4, 3",
+    "steps": [
+      "Launch the app",
+      "Enter the first number",
+      "Enter the × operator",
+      "Enter the second number",
+      "Press ="
+    ],
+    "expected_result": "Product of the two values is displayed",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations"
+    ]
+  },
+  {
+    "id": "TC_001",
+    "title": "Test Zero Boundary Condition",
+    "description": "Test if the app correctly handles the boundary condition of zero",
+    "preconditions": [
+      "A valid number has been entered"
+    ],
+    "test_data": "0",
+    "steps": [
+      "Launch the app",
+      "Enter a number",
+      "Enter the + operator",
+      "Enter 0",
+      "Press ="
+    ],
+    "expected_result": "Original number is displayed",
+    "type": "boundary",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001",
+      "TC_005"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations"
+    ]
+  },
+  {
+    "id": "TC_001",
+    "title": "Test Large Number Input",
+    "description": "Test if the app correctly handles large number inputs",
+    "preconditions": [],
+    "test_data": "999999999",
+    "steps": [
+      "Launch the app",
+      "Enter a large number"
+    ],
+    "expected_result": "Large number is displayed on screen",
+    "type": "performance",
+    "priority": "low",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User interacts with a UI element to provide input"
+    ]
+  },
+  {
+    "id": "TC_001",
+    "title": "Test Decimal Point as First Input",
+    "description": "Test if the app correctly handles a decimal point as the first input",
+    "preconditions": [],
+    "test_data": ".",
+    "steps": [
+      "Launch the app",
+      "Enter a decimal point"
+    ],
+    "expected_result": "0. is displayed on screen",
+    "type": "functional",
+    "priority": "medium",
+    "dependencies": [
+      "TC_003"
+    ],
+    "assumptions": [
+      "Decimal input is used for fractional numbers"
+    ]
+  },
+  {
+    "id": "TC_011",
+    "title": "Test Division Operation",
+    "description": "Test if the app correctly performs division operations using the ÷ operator.",
+    "preconditions": [
+      "The app is open",
+      "The calculator is in a ready state"
+    ],
+    "test_data": "10, 2, ÷",
+    "steps": [
+      "Enter 10",
+      "Enter ÷",
+      "Enter 2",
+      "Press ="
+    ],
+    "expected_result": "5",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User understands basic arithmetic operations"
+    ]
+  },
+  {
+    "id": "TC_011",
+    "title": "Test Divide By Zero Error Handling",
+    "description": "Test if the app displays an error message when attempting to divide by zero.",
+    "preconditions": [
+      "The app is open",
+      "The calculator is in a ready state"
+    ],
+    "test_data": "10, 0, ÷",
+    "steps": [
+      "Enter 10",
+      "Enter ÷",
+      "Enter 0",
+      "Press ="
+    ],
+    "expected_result": "Error message 'Cannot divide by zero' is displayed",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "Division operations are expected to occur"
+    ]
+  },
+  {
+    "id": "TC_011",
+    "title": "Test Real-Time Input Display",
+    "description": "Test if the app shows current input on the screen in real-time.",
+    "preconditions": [
+      "The app is open",
+      "The calculator is in a ready state"
+    ],
+    "test_data": "12345",
+    "steps": [
+      "Enter 1",
+      "Enter 2",
+      "Enter 3",
+      "Enter 4",
+      "Enter 5"
+    ],
+    "expected_result": "12345 is displayed on the screen",
+    "type": "performance",
+    "priority": "medium",
+    "dependencies": [],
+    "assumptions": [
+      "User inputs are processed in the order they are entered"
+    ]
+  },
+  {
+    "id": "TC_011",
+    "title": "Test Clear Input/Result",
+    "description": "Test if the app provides a clear (C) button to reset input/result.",
+    "preconditions": [
+      "The app is open",
+      "The calculator is in a ready state",
+      "A number or result is displayed on the screen"
+    ],
+    "test_data": "C",
+    "steps": [
+      "Press C"
+    ],
+    "expected_result": "All current input and results are cleared",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User may need to reset input/result at any stage of operation"
+    ]
+  },
+  {
+    "id": "TC_011",
+    "title": "Test Display Result",
+    "description": "Test if the result is shown after user taps =.",
+    "preconditions": [
+      "The app is open",
+      "The calculator is in a ready state",
+      "A valid operation has been entered"
+    ],
+    "test_data": "10, 2, ÷, =",
+    "steps": [
+      "Enter 10",
+      "Enter ÷",
+      "Enter 2",
+      "Press ="
+    ],
+    "expected_result": "5 is displayed as the result",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User completes an operation before tapping ="
+    ]
+  },
+  {
+    "id": "TC_011",
+    "title": "Test Division with 1",
+    "description": "Test if dividing a number by 1 leaves it unchanged.",
+    "preconditions": [
+      "The app is open",
+      "The calculator is in a ready state"
+    ],
+    "test_data": "10, 1, ÷",
+    "steps": [
+      "Enter 10",
+      "Enter ÷",
+      "Enter 1",
+      "Press ="
+    ],
+    "expected_result": "10",
+    "type": "boundary",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations"
+    ]
+  },
+  {
+    "id": "TC_011",
+    "title": "Test Division of 0",
+    "description": "Test if dividing 0 by any number results in 0.",
+    "preconditions": [
+      "The app is open",
+      "The calculator is in a ready state"
+    ],
+    "test_data": "0, 10, ÷",
+    "steps": [
+      "Enter 0",
+      "Enter ÷",
+      "Enter 10",
+      "Press ="
+    ],
+    "expected_result": "0",
+    "type": "boundary",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations"
+    ]
+  },
+  {
+    "id": "TC_011",
+    "title": "Test Invalid Operator Input",
+    "description": "Test if the app handles invalid operator input correctly.",
+    "preconditions": [
+      "The app is open",
+      "The calculator is in a ready state"
+    ],
+    "test_data": "10, *, 2",
+    "steps": [
+      "Enter 10",
+      "Enter *",
+      "Enter 2",
+      "Press ="
+    ],
+    "expected_result": "Error message 'Invalid operator' is displayed",
+    "type": "negative",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations"
+    ]
+  },
+  {
+    "id": "TC_011",
+    "title": "Test Input Display Performance",
+    "description": "Test if the input display is updated without noticeable lag to ensure smooth user experience.",
+    "preconditions": [
+      "The app is open",
+      "The calculator is in a ready state"
+    ],
+    "test_data": "1234567890",
+    "steps": [
+      "Enter 1",
+      "Enter 2",
+      "Enter 3",
+      "Enter 4",
+      "Enter 5",
+      "Enter 6",
+      "Enter 7",
+      "Enter 8",
+      "Enter 9",
+      "Enter 0"
+    ],
+    "expected_result": "1234567890 is displayed on the screen without noticeable lag",
+    "type": "performance",
+    "priority": "medium",
+    "dependencies": [
+      "TC_003"
+    ],
+    "assumptions": [
+      "User inputs are processed in the order they are entered"
+    ]
+  },
+  {
+    "id": "TC_011",
+    "title": "Test Result Used as First Operand",
+    "description": "Test if operations immediately following a result use the result as the first operand.",
+    "preconditions": [
+      "The app is open",
+      "The calculator is in a ready state",
+      "A result is displayed on the screen"
+    ],
+    "test_data": "10, 2, ÷, =, ÷, 2, =",
+    "steps": [
+      "Enter 10",
+      "Enter ÷",
+      "Enter 2",
+      "Press =",
+      "Enter ÷",
+      "Enter 2",
+      "Press ="
+    ],
+    "expected_result": "2.5 is displayed as the result",
+    "type": "functional",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001",
+      "TC_005"
+    ],
+    "assumptions": [
+      "User completes an operation before tapping ="
+    ]
+  }
+]

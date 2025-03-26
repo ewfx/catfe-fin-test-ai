@@ -1,0 +1,253 @@
+[
+  {
+    "id": "TC_001",
+    "title": "Successful User Login",
+    "description": "Test successful login with valid username and password",
+    "preconditions": [
+      "User is registered"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "testuser",
+        "password": "testpass"
+      },
+      "expected_data": {
+        "redirect": "dashboard"
+      },
+      "api_endpoints": {
+        "endpoint": "/login",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "username": "id_username",
+        "password": "id_password",
+        "submit": "id_submit"
+      }
+    },
+    "steps": [
+      "Enter 'testuser' in username field",
+      "Enter 'testpass' in password field",
+      "Click on submit button"
+    ],
+    "expected_result": "User is redirected to the dashboard",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User has already registered"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_002",
+    "title": "Unsuccessful User Login",
+    "description": "Test unsuccessful login with invalid username or password",
+    "preconditions": [
+      "User is registered"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "testuser",
+        "password": "wrongpass"
+      },
+      "expected_data": {
+        "error_message": "Invalid login credentials"
+      },
+      "api_endpoints": {
+        "endpoint": "/login",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "username": "id_username",
+        "password": "id_password",
+        "submit": "id_submit"
+      }
+    },
+    "steps": [
+      "Enter 'testuser' in username field",
+      "Enter 'wrongpass' in password field",
+      "Click on submit button"
+    ],
+    "expected_result": "Error message 'Invalid login credentials' is displayed",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User has already registered"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_003",
+    "title": "Account Overview Display",
+    "description": "Test display of account overview for logged-in user",
+    "preconditions": [
+      "User is logged in",
+      "User has at least one account"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "account_list": "displayed"
+      },
+      "api_endpoints": {
+        "endpoint": "/account_overview",
+        "method": "GET"
+      },
+      "ui_elements": {
+        "account_list": "id_account_list"
+      }
+    },
+    "steps": [
+      "Navigate to account overview page"
+    ],
+    "expected_result": "List of user's accounts is displayed",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is logged in",
+      "User has at least one account"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_004",
+    "title": "Open New Account - Success",
+    "description": "Test successful opening of a new account",
+    "preconditions": [
+      "User is logged in",
+      "User has at least one account with sufficient balance"
+    ],
+    "test_data": {
+      "input_data": {
+        "account_type": "Checking",
+        "initial_deposit_source_account": "existing_account_number"
+      },
+      "expected_data": {
+        "confirmation": "displayed",
+        "new_account_number": "displayed"
+      },
+      "api_endpoints": {
+        "endpoint": "/open_account",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "account_type": "id_account_type",
+        "source_account": "id_source_account",
+        "submit": "id_submit"
+      }
+    },
+    "steps": [
+      "Select 'Checking' in account type dropdown",
+      "Select an account with sufficient balance in source account dropdown",
+      "Click on submit button"
+    ],
+    "expected_result": "Confirmation and new account number are displayed",
+    "type": "functional",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is logged in",
+      "User has at least one account with sufficient balance"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_005",
+    "title": "Open New Account - Failure",
+    "description": "Test unsuccessful opening of a new account due to insufficient balance in source account",
+    "preconditions": [
+      "User is logged in",
+      "User has at least one account with insufficient balance"
+    ],
+    "test_data": {
+      "input_data": {
+        "account_type": "Checking",
+        "initial_deposit_source_account": "insufficient_balance_account_number"
+      },
+      "expected_data": {
+        "error_message": "Insufficient balance in source account"
+      },
+      "api_endpoints": {
+        "endpoint": "/open_account",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "account_type": "id_account_type",
+        "source_account": "id_source_account",
+        "submit": "id_submit"
+      }
+    },
+    "steps": [
+      "Select 'Checking' in account type dropdown",
+      "Select an account with insufficient balance in source account dropdown",
+      "Click on submit button"
+    ],
+    "expected_result": "Error message 'Insufficient balance in source account' is displayed",
+    "type": "negative",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is logged in",
+      "User has at least one account with insufficient balance"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  }
+]

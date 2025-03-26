@@ -1,0 +1,11 @@
+ID	Requirement Description	Priority	Acceptance Criteria
+FR-001	The app must allow numeric input (0–9)	High	User can tap number buttons to form a number
+FR-002	The app must allow decimal input using .	High	Decimal values are correctly handled
+FR-003	The app must allow addition using + operator	High	Sum of two values is displayed on =
+FR-004	The app must allow subtraction using - operator	High	Difference is displayed on =
+FR-005	The app must allow multiplication using × operator	High	Product is displayed on =
+FR-006	The app must allow division using ÷ operator	High	Quotient is displayed on =
+FR-007	The app must display error on divide-by-zero	High	Message: “Cannot divide by zero”
+FR-008	The app must show current input on the screen in real time	Medium	Screen updates as user enters digits/operators
+FR-009	The app must provide a C (clear) button to reset input/result	High	All data is cleared when user taps C
+FR-010	The result must be shown after user taps =	High	Correct output shown after calculation

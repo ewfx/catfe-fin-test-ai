@@ -1,0 +1,301 @@
+[
+  {
+    "id": "TC_001",
+    "title": "Successful User Login",
+    "description": "Test the successful login with valid credentials",
+    "preconditions": [
+      "User is on the login page"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "standard_user",
+        "password": "secret_sauce"
+      },
+      "expected_data": {
+        "redirect": "product_list"
+      },
+      "api_endpoints": {
+        "endpoint": "/login",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "username": "id_username",
+        "password": "id_password",
+        "login_button": "id_login"
+      }
+    },
+    "steps": [
+      "Enter valid username",
+      "Enter valid password",
+      "Click on login button"
+    ],
+    "expected_result": "User is redirected to product list",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "Credentials are static and controlled by the system"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_002",
+    "title": "Unsuccessful User Login",
+    "description": "Test the unsuccessful login with invalid credentials",
+    "preconditions": [
+      "User is on the login page"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "invalid_user",
+        "password": "wrong_sauce"
+      },
+      "expected_data": {
+        "error_message": "Invalid credentials"
+      },
+      "api_endpoints": {
+        "endpoint": "/login",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "username": "id_username",
+        "password": "id_password",
+        "login_button": "id_login",
+        "error_message": "id_error"
+      }
+    },
+    "steps": [
+      "Enter invalid username",
+      "Enter invalid password",
+      "Click on login button"
+    ],
+    "expected_result": "Error message 'Invalid credentials' is displayed",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "Credentials are static and controlled by the system"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_003",
+    "title": "Product List Visibility",
+    "description": "Test that product list is displayed after successful login",
+    "preconditions": [
+      "User is logged in"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "product_list": "visible"
+      },
+      "api_endpoints": {
+        "endpoint": "/products",
+        "method": "GET"
+      },
+      "ui_elements": {
+        "product_list": "id_product_list"
+      }
+    },
+    "steps": [
+      "Verify that product list is visible"
+    ],
+    "expected_result": "Product list is displayed",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is not 'locked_out_user'"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_004",
+    "title": "Add Product to Cart",
+    "description": "Test that product can be added to the cart",
+    "preconditions": [
+      "User is logged in",
+      "Product list is displayed"
+    ],
+    "test_data": {
+      "input_data": {
+        "product_id": "1"
+      },
+      "expected_data": {
+        "cart_count": "1"
+      },
+      "api_endpoints": {
+        "endpoint": "/cart/add",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "add_to_cart_button": "id_add_to_cart",
+        "cart_count": "id_cart_count"
+      }
+    },
+    "steps": [
+      "Click on 'Add to Cart' button for a product",
+      "Verify that cart count increases"
+    ],
+    "expected_result": "Cart count increases by 1",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_005",
+    "title": "Remove Product from Cart",
+    "description": "Test that product can be removed from the cart",
+    "preconditions": [
+      "User is logged in",
+      "Product list is displayed",
+      "Product is added to the cart"
+    ],
+    "test_data": {
+      "input_data": {
+        "product_id": "1"
+      },
+      "expected_data": {
+        "cart_count": "0"
+      },
+      "api_endpoints": {
+        "endpoint": "/cart/remove",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "remove_from_cart_button": "id_remove_from_cart",
+        "cart_count": "id_cart_count"
+      }
+    },
+    "steps": [
+      "Click on 'Remove' button for a product in the cart",
+      "Verify that cart count decreases"
+    ],
+    "expected_result": "Cart count decreases by 1",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003",
+      "TC_004"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_006",
+    "title": "Checkout Process",
+    "description": "Test that user can proceed to checkout from cart page",
+    "preconditions": [
+      "User is logged in",
+      "Product is added to the cart"
+    ],
+    "test_data": {
+      "input_data": {
+        "First Name": "John",
+        "Last Name": "Doe",
+        "Postal Code": "12345"
+      },
+      "expected_data": {
+        "confirmation_message": "Your order has been placed."
+      },
+      "api_endpoints": {
+        "endpoint": "/checkout",
+        "method": "POST"
+      },
+      "ui_elements": {
+        "checkout_button": "id_checkout",
+        "first_name": "id_first_name",
+        "last_name": "id_last_name",
+        "postal_code": "id_postal_code",
+        "confirmation_message": "id_confirmation"
+      }
+    },
+    "steps": [
+      "Click on 'Checkout' button",
+      "Fill in required fields in checkout step one",
+      "Click on 'Continue' button",
+      "Verify that order summary and total are displayed in checkout step two",
+      "Click on 'Finish' button"
+    ],
+    "expected_result": "Confirmation message 'Your order has been placed.' is displayed",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_004"
+    ],
+    "assumptions": [
+      "No real backend or payment processing occurs"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  }
+]

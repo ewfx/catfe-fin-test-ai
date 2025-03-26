@@ -1,0 +1,277 @@
+[
+  {
+    "id": "TC_001",
+    "title": "Successful User Login",
+    "description": "Test successful user login with valid credentials",
+    "preconditions": [
+      "Application is launched and in ready state"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "standard_user",
+        "password": "secret_sauce"
+      },
+      "expected_data": {
+        "redirect": "product_catalog"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "username_field": "id_username",
+        "password_field": "id_password",
+        "login_button": "id_login"
+      }
+    },
+    "steps": [
+      "Enter 'standard_user' in username field",
+      "Enter 'secret_sauce' in password field",
+      "Click on login button"
+    ],
+    "expected_result": "User is redirected to product catalog",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "Credentials are static and controlled by the system"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_002",
+    "title": "Unsuccessful User Login",
+    "description": "Test unsuccessful user login with invalid credentials",
+    "preconditions": [
+      "Application is launched and in ready state"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "invalid_user",
+        "password": "wrong_password"
+      },
+      "expected_data": {
+        "error_message": "Invalid username or password"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "username_field": "id_username",
+        "password_field": "id_password",
+        "login_button": "id_login"
+      }
+    },
+    "steps": [
+      "Enter 'invalid_user' in username field",
+      "Enter 'wrong_password' in password field",
+      "Click on login button"
+    ],
+    "expected_result": "Error message 'Invalid username or password' is displayed",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "Credentials are static and controlled by the system"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_003",
+    "title": "Product Catalog Visibility Post-Login",
+    "description": "Test visibility of product catalog after successful login",
+    "preconditions": [
+      "User is logged in"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "product_list": "visible"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "product_list": "id_product_list"
+      }
+    },
+    "steps": [
+      "Login with valid credentials",
+      "Verify visibility of product list"
+    ],
+    "expected_result": "Product list is visible",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is redirected to the product catalog upon successful login"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_004",
+    "title": "Product Information Display",
+    "description": "Test display of product information in product catalog",
+    "preconditions": [
+      "User is logged in",
+      "Product list is visible"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "product_info": "visible"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "product_info": "id_product_info"
+      }
+    },
+    "steps": [
+      "Login with valid credentials",
+      "Verify visibility of product information"
+    ],
+    "expected_result": "Product information (name, price, image, 'Add to Cart' button) is visible for each product",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003"
+    ],
+    "assumptions": [
+      "Product data is correctly formatted and available"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_005",
+    "title": "Product Sorting",
+    "description": "Test product sorting functionality in product catalog",
+    "preconditions": [
+      "User is logged in",
+      "Product list is visible"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "product_sorting": "functional"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "sorting_option": "id_sorting_option"
+      }
+    },
+    "steps": [
+      "Login with valid credentials",
+      "Select a sorting option",
+      "Verify product list is sorted according to selected option"
+    ],
+    "expected_result": "Product list is sorted according to selected option",
+    "type": "functional",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001",
+      "TC_003"
+    ],
+    "assumptions": [
+      "Sorting options are provided in the UI"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_006",
+    "title": "Shopping Cart Modification",
+    "description": "Test adding and removing products to/from the shopping cart",
+    "preconditions": [
+      "User is logged in",
+      "Product list is visible"
+    ],
+    "test_data": {
+      "input_data": {
+        "product_id": "valid_product_id"
+      },
+      "expected_data": {
+        "cart_item_count": "increased/decreased"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "add_to_cart_button": "id_add_to_cart",
+        "remove_from_cart_button": "id_remove_from_cart"
+      }
+    },
+    "steps": [
+      "Login with valid credentials",
+      "Click 'Add to Cart' button for a product",
+      "Verify cart item count is increased",
+      "Click 'Remove from Cart' button for the same product",
+      "Verify cart item count is decreased"
+    ],
+    "expected_result": "Cart item count increases when product is added and decreases when product is removed",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003",
+      "TC_004"
+    ],
+    "assumptions": [
+      "Each 'Add to Cart' click adds one unit of the product",
+      "Users can add products without navigating to the product detail page"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  }
+]

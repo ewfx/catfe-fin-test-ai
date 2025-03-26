@@ -1,0 +1,224 @@
+[
+  {
+    "id": "TC_001",
+    "title": "Successful Login",
+    "description": "Test successful login with valid credentials",
+    "preconditions": [
+      "Application is launched and in ready state"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "standard_user",
+        "password": "secret_sauce"
+      },
+      "expected_data": {
+        "redirect": "product_catalog"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "username": "id_username",
+        "password": "id_password",
+        "login_button": "id_login"
+      }
+    },
+    "steps": [
+      "Enter 'standard_user' in username field",
+      "Enter 'secret_sauce' in password field",
+      "Click on login button"
+    ],
+    "expected_result": "User is redirected to product catalog",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "Credentials are static and controlled by the system"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_002",
+    "title": "Invalid Login",
+    "description": "Test login with invalid credentials",
+    "preconditions": [
+      "Application is launched and in ready state"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "invalid_user",
+        "password": "invalid_password"
+      },
+      "expected_data": {
+        "error_message": "Invalid username or password"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "username": "id_username",
+        "password": "id_password",
+        "login_button": "id_login"
+      }
+    },
+    "steps": [
+      "Enter 'invalid_user' in username field",
+      "Enter 'invalid_password' in password field",
+      "Click on login button"
+    ],
+    "expected_result": "Error message 'Invalid username or password' is displayed",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "Credentials are static and controlled by the system"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_003",
+    "title": "Locked User Login",
+    "description": "Test login with locked user credentials",
+    "preconditions": [
+      "Application is launched and in ready state"
+    ],
+    "test_data": {
+      "input_data": {
+        "username": "locked_out_user",
+        "password": "secret_sauce"
+      },
+      "expected_data": {
+        "error_message": "Your account has been locked"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "username": "id_username",
+        "password": "id_password",
+        "login_button": "id_login"
+      }
+    },
+    "steps": [
+      "Enter 'locked_out_user' in username field",
+      "Enter 'secret_sauce' in password field",
+      "Click on login button"
+    ],
+    "expected_result": "Error message 'Your account has been locked' is displayed",
+    "type": "functional",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "Credentials are static and controlled by the system"
+    ],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_004",
+    "title": "Product Catalog Visibility",
+    "description": "Test visibility of product catalog after successful login",
+    "preconditions": [
+      "User is logged in"
+    ],
+    "test_data": {
+      "input_data": {},
+      "expected_data": {
+        "product_catalog": "visible"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "product_catalog": "id_product_catalog"
+      }
+    },
+    "steps": [
+      "Verify product catalog is visible"
+    ],
+    "expected_result": "Product catalog is displayed",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  },
+  {
+    "id": "TC_005",
+    "title": "Add Product to Cart",
+    "description": "Test adding a product to the cart",
+    "preconditions": [
+      "User is logged in",
+      "Product catalog is visible"
+    ],
+    "test_data": {
+      "input_data": {
+        "product": "product_1"
+      },
+      "expected_data": {
+        "cart_count": "1"
+      },
+      "api_endpoints": {},
+      "ui_elements": {
+        "product": "id_product_1",
+        "add_to_cart": "id_add_to_cart"
+      }
+    },
+    "steps": [
+      "Click on 'Add to Cart' button for 'product_1'"
+    ],
+    "expected_result": "Cart count increases to 1",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_004"
+    ],
+    "assumptions": [],
+    "test_environment": {
+      "browser": [
+        "Chrome",
+        "Firefox"
+      ],
+      "os": [
+        "Windows",
+        "MacOS"
+      ],
+      "device": "Desktop"
+    }
+  }
+]

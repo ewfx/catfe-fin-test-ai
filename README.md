@@ -1,60 +1,146 @@
-# 🚀 Project Name
+# 🚀 AI-Powered Test Automation Generator
 
 ## 📌 Table of Contents
 - [Introduction](#introduction)
-- [Demo](#demo)
 - [Inspiration](#inspiration)
 - [What It Does](#what-it-does)
 - [How We Built It](#how-we-built-it)
 - [Challenges We Faced](#challenges-we-faced)
 - [How to Run](#how-to-run)
+- [Project Structure](#project-structure)
 - [Tech Stack](#tech-stack)
-- [Team](#team)
 
 ---
 
 ## 🎯 Introduction
-A brief overview of your project and its purpose. Mention which problem statement are your attempting to solve. Keep it concise and engaging.
-
-## 🎥 Demo
-🔗 [Live Demo](#) (if applicable)  
-📹 [Video Demo](#) (if applicable)  
-🖼️ Screenshots:
-
-![Screenshot 1](link-to-image)
+An intelligent test automation framework that automatically generates comprehensive test suites from functional requirements documents (FRDs). It leverages GPT-4 to understand requirements, generate test cases, and create executable test code, making test automation more efficient and maintainable.
 
 ## 💡 Inspiration
-What inspired you to create this project? Describe the problem you're solving.
+Manual test case creation and automation is time-consuming and error-prone. We wanted to streamline this process by using AI to automatically understand requirements and generate high-quality test cases and automation code, reducing the time and effort needed for test automation while improving coverage.
 
 ## ⚙️ What It Does
-Explain the key features and functionalities of your project.
+- Extracts understanding blocks from FRD documents
+- Generates comprehensive test cases covering functional, boundary, and negative scenarios
+- Creates executable Selenium-based test code
+- Generates necessary configuration files for test execution
+- Supports Docker-based test execution
+- Provides detailed execution reports
 
 ## 🛠️ How We Built It
-Briefly outline the technologies, frameworks, and tools used in development.
+The system is built with a modular architecture:
+1. Feature Extractor: Analyzes FRD documents
+2. Test Case Generator: Creates structured test cases
+3. Code Generator: Produces executable test code
+4. Test Executor: Runs tests in Docker environment
 
 ## 🚧 Challenges We Faced
-Describe the major technical or non-technical challenges your team encountered.
+1. Token limit management with large FRDs
+2. Ensuring consistent test case structure
+3. Generating maintainable test code
+4. Handling complex test dependencies
+5. Managing Docker environment setup
 
 ## 🏃 How to Run
 1. Clone the repository  
    ```sh
-   git clone https://github.com/your-repo.git
+   git clone https://github.com/ewfx/catfe-fin-test-ai.git
+   cd catfe-fin-test-ai/code/src
    ```
-2. Install dependencies  
+
+2. Create and activate virtual environment  
    ```sh
-   npm install  # or pip install -r requirements.txt (for Python)
+   # For Windows
+   python -m venv venv
+   .\venv\Scripts\activate
+
+   # For macOS/Linux
+   python3 -m venv venv
+   source venv/bin/activate
    ```
-3. Run the project  
+
+3. Install dependencies  
    ```sh
-   npm start  # or python app.py
+   pip install -r requirements.txt
    ```
+
+4. Create .env file  
+   ```sh
+   # Create .env file
+   touch .env  # For macOS/Linux
+   # or
+   echo. > .env  # For Windows
+   ```
+
+5. Add your OpenAI API key to .env file:
+   ```env
+   OPENAI_API_KEY=your-api-key-here
+   ```
+
+6. Run the project  
+   ```sh
+   python main.py
+   ```
+
+7. Deactivate virtual environment when done  
+   ```sh
+   deactivate
+   ```
+
+## 📁 Project Structure
+```text
+catfe-fin-test-ai/code/src/
+├── .env.example
+├── .gitignore
+├── requirements.txt
+├── main.py
+├── test_data/
+│   └── frd.txt
+├── code_generator/
+│   ├── __init__.py
+│   └── code_generator.py
+├── test_case_generator/
+│   ├── __init__.py
+│   └── generator.py
+└── code_executor/
+    ├── __init__.py
+    └── executor.py
+```
+
+Contents of `.env.example`:
+```env
+# OpenAI API Configuration
+OPENAI_API_KEY=your-api-key-here
+```
+
+Contents of `.gitignore`:
+```gitignore
+# Virtual Environment
+venv/
+env/
+
+# Environment Variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Output Directories
+output*/
+test_outputs/
+tests/
+
+# IDE
+.vscode/
+.idea/
+```
 
 ## 🏗️ Tech Stack
-- 🔹 Frontend: React / Vue / Angular
-- 🔹 Backend: Node.js / FastAPI / Django
-- 🔹 Database: PostgreSQL / Firebase
-- 🔹 Other: OpenAI API / Twilio / Stripe
+- 🔹 Language: Python 3.9+
+- 🔹 AI: OpenAI GPT-4 API
+- 🔹 Testing: Pytest, Selenium WebDriver
+- 🔹 Containerization: Docker
+- 🔹 Other: PyYAML, Rich (for console output)
 
-## 👥 Team
-- **Your Name** - [GitHub](#) | [LinkedIn](#)
-- **Teammate 2** - [GitHub](#) | [LinkedIn](#)
+Would you like me to add or modify any section?

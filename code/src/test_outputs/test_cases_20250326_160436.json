@@ -1,0 +1,248 @@
+[
+  {
+    "id": "TC_001",
+    "title": "Successful User Login",
+    "description": "Test successful login with valid username and password",
+    "preconditions": [
+      "User is registered"
+    ],
+    "test_data": {
+      "username": "testuser",
+      "password": "testpass"
+    },
+    "steps": [
+      "Enter valid username",
+      "Enter valid password",
+      "Click on login button"
+    ],
+    "expected_result": "User is redirected to dashboard",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User has already registered"
+    ]
+  },
+  {
+    "id": "TC_002",
+    "title": "Unsuccessful User Login with Invalid Password",
+    "description": "Test unsuccessful login with valid username and invalid password",
+    "preconditions": [
+      "User is registered"
+    ],
+    "test_data": {
+      "username": "testuser",
+      "password": "wrongpass"
+    },
+    "steps": [
+      "Enter valid username",
+      "Enter invalid password",
+      "Click on login button"
+    ],
+    "expected_result": "Display error message",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User has already registered"
+    ]
+  },
+  {
+    "id": "TC_003",
+    "title": "Display Account Overview",
+    "description": "Test display of account overview for logged-in user",
+    "preconditions": [
+      "User is logged in"
+    ],
+    "test_data": {},
+    "steps": [
+      "Navigate to account overview page"
+    ],
+    "expected_result": "Display list of all user accounts with balance, number, and type",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is successfully authenticated"
+    ]
+  },
+  {
+    "id": "TC_004",
+    "title": "Open New Account with Valid Data",
+    "description": "Test opening of new account with valid data",
+    "preconditions": [
+      "User is logged in",
+      "User has at least one existing account"
+    ],
+    "test_data": {
+      "account_type": "Checking",
+      "source_account": "123456"
+    },
+    "steps": [
+      "Navigate to open new account page",
+      "Select account type",
+      "Select source account",
+      "Submit form"
+    ],
+    "expected_result": "Show confirmation and new account number",
+    "type": "functional",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User has at least one existing account for initial deposit"
+    ]
+  },
+  {
+    "id": "TC_005",
+    "title": "Open New Account with Invalid Data",
+    "description": "Test opening of new account with invalid data",
+    "preconditions": [
+      "User is logged in",
+      "User has at least one existing account"
+    ],
+    "test_data": {
+      "account_type": "Invalid",
+      "source_account": "123456"
+    },
+    "steps": [
+      "Navigate to open new account page",
+      "Select invalid account type",
+      "Select source account",
+      "Submit form"
+    ],
+    "expected_result": "Display error message on failure",
+    "type": "negative",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User has at least one existing account for initial deposit"
+    ]
+  },
+  {
+    "id": "TC_006",
+    "title": "Login Response Time",
+    "description": "Test login response time",
+    "preconditions": [
+      "User is registered"
+    ],
+    "test_data": {
+      "username": "testuser",
+      "password": "testpass"
+    },
+    "steps": [
+      "Enter valid username",
+      "Enter valid password",
+      "Click on login button"
+    ],
+    "expected_result": "Login response time under 2 seconds",
+    "type": "performance",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User has already registered"
+    ]
+  },
+  {
+    "id": "TC_007",
+    "title": "Account Overview Load Time",
+    "description": "Test account overview load time",
+    "preconditions": [
+      "User is logged in"
+    ],
+    "test_data": {},
+    "steps": [
+      "Navigate to account overview page"
+    ],
+    "expected_result": "Account overview loads within 3 seconds",
+    "type": "performance",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User is successfully authenticated"
+    ]
+  },
+  {
+    "id": "TC_008",
+    "title": "Account Creation Response Time",
+    "description": "Test account creation response time",
+    "preconditions": [
+      "User is logged in",
+      "User has at least one existing account"
+    ],
+    "test_data": {
+      "account_type": "Checking",
+      "source_account": "123456"
+    },
+    "steps": [
+      "Navigate to open new account page",
+      "Select account type",
+      "Select source account",
+      "Submit form"
+    ],
+    "expected_result": "Response time for account creation under 5 seconds",
+    "type": "performance",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User has at least one existing account for initial deposit"
+    ]
+  },
+  {
+    "id": "TC_009",
+    "title": "User Login with Leading or Trailing Spaces",
+    "description": "Test user login with username having leading or trailing spaces",
+    "preconditions": [
+      "User is registered"
+    ],
+    "test_data": {
+      "username": " testuser ",
+      "password": "testpass"
+    },
+    "steps": [
+      "Enter username with leading or trailing spaces",
+      "Enter valid password",
+      "Click on login button"
+    ],
+    "expected_result": "User is redirected to dashboard",
+    "type": "boundary",
+    "priority": "medium",
+    "dependencies": [],
+    "assumptions": [
+      "User has already registered"
+    ]
+  },
+  {
+    "id": "TC_010",
+    "title": "User Login with Different Cases",
+    "description": "Test user login with username in different cases",
+    "preconditions": [
+      "User is registered"
+    ],
+    "test_data": {
+      "username": "TestUser",
+      "password": "testpass"
+    },
+    "steps": [
+      "Enter username in different cases",
+      "Enter valid password",
+      "Click on login button"
+    ],
+    "expected_result": "User is redirected to dashboard",
+    "type": "boundary",
+    "priority": "medium",
+    "dependencies": [],
+    "assumptions": [
+      "User has already registered"
+    ]
+  }
+]

@@ -1,0 +1,473 @@
+[
+  {
+    "id": "TC_001",
+    "title": "Valid Numeric Input",
+    "description": "Test the app's ability to correctly handle valid numeric inputs ranging from 0 to 9.",
+    "preconditions": [
+      "Application is launched and in ready state"
+    ],
+    "test_data": "5",
+    "steps": [
+      "Launch the app",
+      "Enter '5' in the numeric input field"
+    ],
+    "expected_result": "The number '5' is displayed on the screen.",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User interacts with the app through a graphical interface."
+    ]
+  },
+  {
+    "id": "TC_002",
+    "title": "Invalid Numeric Input",
+    "description": "Test the app's ability to handle invalid numeric inputs.",
+    "preconditions": [
+      "Application is launched and in ready state"
+    ],
+    "test_data": "A",
+    "steps": [
+      "Launch the app",
+      "Enter 'A' in the numeric input field"
+    ],
+    "expected_result": "An error message is displayed indicating invalid input.",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User interacts with the app through a graphical interface."
+    ]
+  },
+  {
+    "id": "TC_003",
+    "title": "Valid Decimal Input",
+    "description": "Test the app's ability to correctly handle valid decimal inputs.",
+    "preconditions": [
+      "TC_001"
+    ],
+    "test_data": "5.3",
+    "steps": [
+      "Launch the app",
+      "Enter '5.3' in the decimal input field"
+    ],
+    "expected_result": "The number '5.3' is displayed on the screen.",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "Decimal numbers are used for calculations."
+    ]
+  },
+  {
+    "id": "TC_004",
+    "title": "Invalid Decimal Input",
+    "description": "Test the app's ability to handle invalid decimal inputs.",
+    "preconditions": [
+      "TC_001"
+    ],
+    "test_data": "5..3",
+    "steps": [
+      "Launch the app",
+      "Enter '5..3' in the decimal input field"
+    ],
+    "expected_result": "An error message is displayed indicating invalid input.",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "Decimal numbers are used for calculations."
+    ]
+  },
+  {
+    "id": "TC_005",
+    "title": "Valid Addition Operation",
+    "description": "Test the app's ability to correctly perform addition operations.",
+    "preconditions": [
+      "TC_001",
+      "TC_003"
+    ],
+    "test_data": "5+3",
+    "steps": [
+      "Launch the app",
+      "Enter '5+3' in the operation field",
+      "Press the '=' button"
+    ],
+    "expected_result": "The number '8' is displayed on the screen.",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations."
+    ]
+  },
+  {
+    "id": "TC_006",
+    "title": "Invalid Addition Operation",
+    "description": "Test the app's ability to handle invalid addition operations.",
+    "preconditions": [
+      "TC_001",
+      "TC_003"
+    ],
+    "test_data": "5++3",
+    "steps": [
+      "Launch the app",
+      "Enter '5++3' in the operation field",
+      "Press the '=' button"
+    ],
+    "expected_result": "An error message is displayed indicating invalid operation.",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations."
+    ]
+  },
+  {
+    "id": "TC_007",
+    "title": "Valid Subtraction Operation",
+    "description": "Test the app's ability to correctly perform subtraction operations.",
+    "preconditions": [
+      "TC_001",
+      "TC_003"
+    ],
+    "test_data": "5-3",
+    "steps": [
+      "Launch the app",
+      "Enter '5-3' in the operation field",
+      "Press the '=' button"
+    ],
+    "expected_result": "The number '2' is displayed on the screen.",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations."
+    ]
+  },
+  {
+    "id": "TC_008",
+    "title": "Invalid Subtraction Operation",
+    "description": "Test the app's ability to handle invalid subtraction operations.",
+    "preconditions": [
+      "TC_001",
+      "TC_003"
+    ],
+    "test_data": "5--3",
+    "steps": [
+      "Launch the app",
+      "Enter '5--3' in the operation field",
+      "Press the '=' button"
+    ],
+    "expected_result": "An error message is displayed indicating invalid operation.",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations."
+    ]
+  },
+  {
+    "id": "TC_009",
+    "title": "Valid Multiplication Operation",
+    "description": "Test the app's ability to correctly perform multiplication operations.",
+    "preconditions": [
+      "TC_001",
+      "TC_003"
+    ],
+    "test_data": "5×3",
+    "steps": [
+      "Launch the app",
+      "Enter '5×3' in the operation field",
+      "Press the '=' button"
+    ],
+    "expected_result": "The number '15' is displayed on the screen.",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations."
+    ]
+  },
+  {
+    "id": "TC_010",
+    "title": "Invalid Multiplication Operation",
+    "description": "Test the app's ability to handle invalid multiplication operations.",
+    "preconditions": [
+      "TC_001",
+      "TC_003"
+    ],
+    "test_data": "5××3",
+    "steps": [
+      "Launch the app",
+      "Enter '5××3' in the operation field",
+      "Press the '=' button"
+    ],
+    "expected_result": "An error message is displayed indicating invalid operation.",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [
+      "TC_001",
+      "TC_003"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations."
+    ]
+  },
+  {
+    "id": "TC_011",
+    "title": "Division Operation - Positive Scenario",
+    "description": "Test if the app correctly performs division operation",
+    "preconditions": [
+      "The app is installed and opened"
+    ],
+    "test_data": "10 ÷ 2",
+    "steps": [
+      "Enter '10'",
+      "Press '÷'",
+      "Enter '2'",
+      "Press '='"
+    ],
+    "expected_result": "5",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User understands basic arithmetic operations"
+    ]
+  },
+  {
+    "id": "TC_012",
+    "title": "Division Operation - Negative Scenario",
+    "description": "Test if the app handles invalid division operation",
+    "preconditions": [
+      "The app is installed and opened"
+    ],
+    "test_data": "10 ÷ a",
+    "steps": [
+      "Enter '10'",
+      "Press '÷'",
+      "Enter 'a'",
+      "Press '='"
+    ],
+    "expected_result": "Error message for invalid division operation",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User might unintentionally enter non-numeric characters"
+    ]
+  },
+  {
+    "id": "TC_013",
+    "title": "Divide-by-Zero Error Handling",
+    "description": "Test if the app correctly handles division by zero",
+    "preconditions": [
+      "The app is installed and opened"
+    ],
+    "test_data": "10 ÷ 0",
+    "steps": [
+      "Enter '10'",
+      "Press '÷'",
+      "Enter '0'",
+      "Press '='"
+    ],
+    "expected_result": "Error message 'Cannot divide by zero'",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User might unintentionally attempt to divide by zero"
+    ]
+  },
+  {
+    "id": "TC_014",
+    "title": "Real-time Input Display",
+    "description": "Test if the app displays input in real-time",
+    "preconditions": [
+      "The app is installed and opened"
+    ],
+    "test_data": "10 ÷ 2",
+    "steps": [
+      "Enter '10'",
+      "Verify '10' is displayed",
+      "Press '÷'",
+      "Verify '10 ÷' is displayed",
+      "Enter '2'",
+      "Verify '10 ÷ 2' is displayed"
+    ],
+    "expected_result": "All inputs are immediately visible on the screen",
+    "type": "performance",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "The screen is capable of displaying all entered characters without delay"
+    ]
+  },
+  {
+    "id": "TC_015",
+    "title": "Clear Functionality",
+    "description": "Test if the 'C' button clears all data",
+    "preconditions": [
+      "The app is installed and opened"
+    ],
+    "test_data": "10 ÷ 2",
+    "steps": [
+      "Enter '10'",
+      "Press '÷'",
+      "Enter '2'",
+      "Press 'C'"
+    ],
+    "expected_result": "All inputs and results are cleared from the screen",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User may need to reset inputs and results at any point"
+    ]
+  },
+  {
+    "id": "TC_016",
+    "title": "Result Display on Calculation",
+    "description": "Test if the result is displayed after calculation",
+    "preconditions": [
+      "The app is installed and opened"
+    ],
+    "test_data": "10 ÷ 2",
+    "steps": [
+      "Enter '10'",
+      "Press '÷'",
+      "Enter '2'",
+      "Press '='"
+    ],
+    "expected_result": "5",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User completes an operation before tapping '='"
+    ]
+  },
+  {
+    "id": "TC_017",
+    "title": "Result Display on Calculation - Negative Scenario",
+    "description": "Test if the app handles invalid calculation",
+    "preconditions": [
+      "The app is installed and opened"
+    ],
+    "test_data": "10 ÷",
+    "steps": [
+      "Enter '10'",
+      "Press '÷'",
+      "Press '='"
+    ],
+    "expected_result": "Error message for invalid calculation",
+    "type": "negative",
+    "priority": "high",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User might unintentionally enter incomplete operation"
+    ]
+  },
+  {
+    "id": "TC_018",
+    "title": "Division Operation - Boundary Scenario",
+    "description": "Test if the app correctly performs division operation with decimal numbers",
+    "preconditions": [
+      "The app is installed and opened"
+    ],
+    "test_data": "10.5 ÷ 2",
+    "steps": [
+      "Enter '10.5'",
+      "Press '÷'",
+      "Enter '2'",
+      "Press '='"
+    ],
+    "expected_result": "5.25",
+    "type": "boundary",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User understands basic arithmetic operations"
+    ]
+  },
+  {
+    "id": "TC_019",
+    "title": "Division Operation - Performance Scenario",
+    "description": "Test if the app correctly performs division operation with large numbers",
+    "preconditions": [
+      "The app is installed and opened"
+    ],
+    "test_data": "1000000000 ÷ 2",
+    "steps": [
+      "Enter '1000000000'",
+      "Press '÷'",
+      "Enter '2'",
+      "Press '='"
+    ],
+    "expected_result": "500000000",
+    "type": "performance",
+    "priority": "low",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "User might need to perform operations with large numbers"
+    ]
+  },
+  {
+    "id": "TC_020",
+    "title": "Real-time Input Display - Rapid Input",
+    "description": "Test if the app displays input in real-time when user enters data rapidly",
+    "preconditions": [
+      "The app is installed and opened"
+    ],
+    "test_data": "10 ÷ 2",
+    "steps": [
+      "Enter '10' rapidly",
+      "Verify '10' is displayed",
+      "Press '÷' rapidly",
+      "Verify '10 ÷' is displayed",
+      "Enter '2' rapidly",
+      "Verify '10 ÷ 2' is displayed"
+    ],
+    "expected_result": "All inputs are immediately visible on the screen",
+    "type": "performance",
+    "priority": "medium",
+    "dependencies": [
+      "TC_001"
+    ],
+    "assumptions": [
+      "The screen is capable of displaying all entered characters without delay"
+    ]
+  }
+]

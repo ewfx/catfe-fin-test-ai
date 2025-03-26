@@ -1,0 +1,49 @@
+Application Name: ParaBank – Online Banking System  
+Application URL: [https://parabank.parasoft.com/parabank/index.htm](https://parabank.parasoft.com/parabank/index.htm)  
+
+4. Functional Requirements
+
+4.1 User Authentication
+ FR001: Users must be able to log in using username and password.
+ FR002: Display appropriate error message for incorrect login credentials.
+ FR003: Support logout and session expiration.
+
+ 4.2 Account Overview
+ FR004: Display all accounts associated with the loggedin user.
+ FR005: Show account balance, account number, and account type.
+ FR006: Allow users to view transaction history.
+
+ 4.3 Open New Account
+ FR007: Allow users to open a new Checking or Savings account.
+ FR008: Let user select existing account to transfer initial deposit from.
+ FR009: Show confirmation and new account number upon success.
+
+ 4.4 Funds Transfer
+ FR010: Enable transfer of funds between user’s own accounts.
+ FR011: Validate sufficient balance in the source account.
+ FR012: Display success/failure confirmation.
+
+ 4.5 Bill Payment
+ FR013: Allow users to pay bills to external payees.
+ FR014: Users must enter payee name, address, phone, and account details.
+ FR015: Deduct amount from selected account and confirm payment.
+
+ 4.6 Account Services
+ FR016: Allow users to update contact information (address, phone, email).
+ FR017: Provide form for password change with current and new password.
+ FR018: Show success/failure messages appropriately.
+
+ 4.7 Loan Request
+ FR019: Enable users to request a loan by entering amount, down payment, and from account.
+ FR020: Confirm loan status and display application result.
+
+ 4.8 Contact Us
+ FR021: Users should be able to fill out a contact form with their message.
+ FR022: Display submission confirmation.
+
+ 4.9 Navigation & Accessibility
+ FR023: Display consistent navigation menu across all pages.
+ FR024: Ensure forms are keyboardaccessible.
+ FR025: Ensure meaningful page titles and headings.
+
+

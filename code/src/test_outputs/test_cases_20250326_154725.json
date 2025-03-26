@@ -1,0 +1,20 @@
+[
+  {
+    "id": "TC_001",
+    "title": "Verify Numeric Input Acceptance",
+    "description": "Test if the app accepts numeric inputs from 0 to 9 and displays them on the screen.",
+    "preconditions": [],
+    "test_data": "Numeric values 0 to 9",
+    "steps": [
+      "Launch the app",
+      "Enter a numeric value from 0 to 9 using the numeric keypad"
+    ],
+    "expected_result": "The entered numeric value should be displayed on the screen.",
+    "type": "functional",
+    "priority": "high",
+    "dependencies": [],
+    "assumptions": [
+      "User interacts with a numeric keypad"
+    ]
+  }
+]
