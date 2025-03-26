@@ -27,7 +27,7 @@ A brief overview of your project and its purpose. Mention which problem statemen
 What inspired you to create this project? Describe the problem you're solving.
 
 ## ⚙️ What It Does
-Explain the key features and functionalities of your project.
+Explain the key features and functionalities of your project
 
 ## 🛠️ How We Built It
 Briefly outline the technologies, frameworks, and tools used in development.
