@@ -19,6 +19,7 @@ An intelligent test automation framework that automatically generates comprehens
 Manual test case creation and automation is time-consuming and error-prone. We wanted to streamline this process by using AI to automatically understand requirements and generate high-quality test cases and automation code, reducing the time and effort needed for test automation while improving coverage.
 
 ## ⚙️ What It Does
+
 - Extracts understanding blocks from FRD documents
 - Generates comprehensive test cases covering functional, boundary, and negative scenarios
 - Creates executable Selenium-based test code
@@ -143,4 +144,3 @@ tests/
 - 🔹 Containerization: Docker
 - 🔹 Other: PyYAML, Rich (for console output)
 
-Would you like me to add or modify any section?
